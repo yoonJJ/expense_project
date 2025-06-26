@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/* 색상 변수 */
+:root {
+  --main-color: #4CAF50;
+  --main-hover: #43a047;
+  --accent-color: #ff6b6b;
+  --accent-hover: #e85656;
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --card-color: #ffffff; 
+  --border-color: #e0e0e0;}
+
+/* 전체 스타일 */
+body {font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-color);}
+
+/* 중앙 정렬용 카드 */
+.container {width: 100%; max-width: 420px; margin: 40px auto; padding: 24px; background-color: var(--card-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border-radius: 12px; box-sizing: border-box;}
+
+/* 제목 정렬 */
+h1, h2, h3 {text-align: center; margin-bottom: 20px; color: var(--main-color);}
+h1 {font-size: 1.8rem;}
+
+/* 섹션 간격 */
+section {margin-bottom: 30px;}
+
+/* 입력창 및 버튼 스타일 */
+input, button {padding: 12px; margin: 8px 0; font-size: 16px; width: 100%; box-sizing: border-box; border-radius: 8px;}
+input {border: 1px solid var(--border-color);
+  background-color: #fff;}
+
+/* 버튼 스타일 */
+button {background-color: var(--main-color); color: white; border: none; cursor: pointer; font-weight: bold; transition: background-color 0.2s;}
+button:hover {background-color: var(--main-hover);}
+
+/* 삭제 버튼 전용 스타일 */
+li button {background-color: var(--accent-color); padding: 6px 12px; font-size: 14px;}
+li button:hover {background-color: var(--accent-hover);}
+
+/* 지출 리스트 스타일 */
+ul {list-style: none; padding: 0; margin-top: 12px;}
+li {background-color: #f1f3f5; padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.3rem;
+  }
+
+  input, button {
+    font-size: 15px;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li button {
+    width: 100%;
+    margin-top: 6px;
+  }
+}
