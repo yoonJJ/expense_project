@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #3182f6;
+  --hover-color: #2563eb;
+  --alert-color: #ff5a5f;
+  --bg-color: #f4f6fa;
+  --text-color: #1f2937;
+  --card-color: #ffffff;
+  --border-color: #e0e0e0;
+}
+
+body {font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0;}
+h1 {text-align: center; font-size: 1.8rem; color: var(--main-color); margin-bottom: 30px; font-weight: 700;}
+h2 {font-size: 1.2rem; margin-bottom: 16px; font-weight: 600;}
+input {width: 100%; padding: 14px; font-size: 15px; margin-bottom: 14px; border: 1px solid var(--border-color); border-radius: 14px; box-sizing: border-box; background-color: #fff;}
+button {width: 100%; padding: 14px; font-size: 15px; font-weight: 600; color: #fff; background-color: var(--main-color); border: none; border-radius: 14px; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease;}
+button:hover {background-color: var(--hover-color);}
+button:active {transform: scale(0.98);}
+ul {list-style: none; padding: 0; margin-top: 16px;}
+li {background-color: #f1f5f9; padding: 14px 16px; margin-bottom: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;}
+li button {background-color: var(--alert-color); color: white; border: none; padding: 6px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;}
+li button:hover {background-color: #e04848;}
