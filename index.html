@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <title>여행 예산 가계부</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>여행 예산 가계부</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>여행 예산 가계부</h1>
+  <div class="container">
+    <h1>여행 예산 가계부</h1>
 
-        <section id="budget-section">
-            <h2>💰 예산 설정</h2>
-            <input type="number" id="budget-input" placeholder="총 예산 (원)">
-            <button id="set-budget">예산 설정</button>
-        </section>
+    <section id="budget-section" class="card">
+      <h2>💰 예산 설정</h2>
+      <input type="number" id="budget-input" placeholder="총 예산 (원)" step="10" />
+      <button id="set-budget">예산 설정</button>
+    </section>
 
-        <section id="status-section" style="display: none;">
-            <h3>💵 남은 예산: <span id="remaining">0</span> 원</h3>
-            <h3>📉 총 지출: <span id="total">0</span> 원</h3>
-            <p id="over-budget" style="color: red; display: none;">⚠️ 예산을 초과했습니다!</p>
-        </section>
-
-        <div style="margin-top: 15px;">
-            <input type="number" id="edit-budget" placeholder="예산 수정 (원)">
-            <button id="update-budget">예산 수정</button>
+    <section id="status-section" class="card" style="display: none;">
+      <div class="budget-display">
+        <div>
+          <h3>남은 예산</h3>
+          <p class="amount" id="remaining">0원</p>
         </div>
+        <div>
+          <h3>총 지출</h3>
+          <p class="amount" id="total">0원</p>
+        </div>
+      </div>
+      <p id="over-budget" class="warning" style="display: none;">⚠️ 예산을 초과했습니다!</p>
 
-        <button id="reset-budget" style="margin-top: 10px;">초기화</button>
+      <div class="edit-box">
+        <input type="number" id="edit-budget" placeholder="예산 수정 (원)" step="10" />
+        <button id="update-budget">예산 수정</button>
+        <button id="reset-budget" class="reset">초기화</button>
+      </div>
+    </section>
 
-        <section id="expense-section" style="display: none;">
-            <h2>📋 지출 입력</h2>
-            <form id="expense-form">
-                <input type="text" id="desc" placeholder="지출 내용" required />
-                <input type="number" id="amount" placeholder="금액 (원)" required />
-                <button type="submit">추가</button>
-            </form>
-            <ul id="expense-list"></ul>
-        </section>
-    </div>
-    
-    <script src="js/script.js"></script>
+    <section id="expense-section" class="card" style="display: none;">
+      <h2>📋 지출 입력</h2>
+      <form id="expense-form">
+        <input type="text" id="desc" placeholder="지출 내용" required />
+        <input type="number" id="amount" placeholder="금액 (원)" required step="10" />
+        <button type="submit">추가</button>
+      </form>
+      <ul id="expense-list"></ul>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
