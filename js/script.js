@@ -13,11 +13,8 @@ const budgetSection = document.getElementById('budget-section');
 const statusSection = document.getElementById('status-section');
 const expenseSection = document.getElementById('expense-section');
 
-// ✅ 추가된 예산 수정 관련 요소
 const editBudgetInput = document.getElementById('edit-budget');
 const updateBudgetBtn = document.getElementById('update-budget');
-
-// ✅ 초기화 버튼
 const resetBtn = document.getElementById('reset-budget');
 
 let budget = Number(localStorage.getItem('budget')) || 0;
@@ -32,8 +29,8 @@ function updateDisplay() {
   let total = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
   let remaining = budget - total;
 
-  totalDisplay.textContent = total.toLocaleString();
-  remainingDisplay.textContent = remaining.toLocaleString();
+  totalDisplay.textContent = total.toLocaleString() + '원';
+  remainingDisplay.textContent = remaining.toLocaleString() + '원';
 
   overBudgetWarning.style.display = remaining < 0 ? 'block' : 'none';
 }
@@ -58,7 +55,6 @@ function renderExpenses() {
   });
 }
 
-// ✅ 예산 설정 버튼
 setBudgetBtn.onclick = () => {
   const inputVal = Number(budgetInput.value);
   if (inputVal > 0) {
@@ -71,7 +67,6 @@ setBudgetBtn.onclick = () => {
   }
 };
 
-// ✅ 예산 수정 버튼
 updateBudgetBtn.onclick = () => {
   const newBudget = Number(editBudgetInput.value);
   if (newBudget > 0) {
@@ -83,7 +78,6 @@ updateBudgetBtn.onclick = () => {
   }
 };
 
-// ✅ 초기화 버튼
 resetBtn.onclick = () => {
   if (confirm("예산과 지출 내역을 모두 초기화할까요?")) {
     localStorage.removeItem('budget');
@@ -92,13 +86,12 @@ resetBtn.onclick = () => {
   }
 };
 
-// ✅ 지출 입력 처리
 expenseForm.onsubmit = (e) => {
   e.preventDefault();
-  const desc = descInput.value;
+  const desc = descInput.value.trim();
   const amount = Number(amountInput.value);
 
-  if (!desc || !amount) return;
+  if (!desc || !amount || amount <= 0) return;
 
   expenses.push({ desc, amount });
   save();
@@ -108,11 +101,17 @@ expenseForm.onsubmit = (e) => {
   renderExpenses();
 };
 
-// ✅ 초기 로딩 시 UI 설정
 if (budget > 0) {
   budgetSection.style.display = 'none';
   statusSection.style.display = 'block';
   expenseSection.style.display = 'block';
   updateDisplay();
   renderExpenses();
+}
+
+// ✅ 목적지 버튼 클릭 시 T map 연동
+function openTMap(destination) {
+  const encoded = encodeURIComponent(destination);
+  const tmapUrl = `tmap://search?name=${encoded}`;
+  window.location.href = tmapUrl;
 }
