@@ -1,77 +1,186 @@
 @charset "utf-8";
 @import url(reset.css);
 
-.container {max-width: 480px; margin: 60px auto; padding: 0 20px;}
-.card {background-color: var(--card-color); border-radius: 20px; padding: 24px; margin-bottom: 24px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);}
-.reset {background-color: var(--alert-color); margin-top: 10px;}
-.reset:hover {background-color: #e04848;}
-.budget-display {display: flex; justify-content: space-between; margin-bottom: 16px; text-align: center; gap: 10px;}
-.budget-display h3 {margin: 0 0 6px; font-weight: 500; font-size: 0.95rem; color: #555;}
-.amount {font-size: 1.4rem; font-weight: bold; color: var(--text-color);}
-.warning {color: var(--alert-color); text-align: center; margin-bottom: 16px; font-weight: 500;}
-.edit-box input {margin-bottom: 10px;}
+/* ===== 3. 공통 레이아웃 및 컴포넌트 스타일 ===== */
+.container {
+  max-width: 480px; /* 최대 너비 제한 */
+  margin: 60px auto; /* 중앙 정렬 */
+  padding: 0 20px; /* 좌우 여백 */
+}
 
+.card {
+  background-color: var(--card-color);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03); /* 은은한 그림자 */
+}
 
-.dest-buttons {display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;}
-.dest-buttons button {flex: 1 1 45%; min-width: 120px;}
-.region-select {display: flex; justify-content: space-evenly; gap: 12px; margin: 16px 0; flex-wrap: wrap;}
-.region-select input[type="radio"] {display: none;}
-.region-select label {padding: 12px 24px; border: 1.5px solid var(--border-color); border-radius: 999px; background-color: #fff; font-size: 1rem; font-weight: 500; color: #333; cursor: pointer; transition: all 0.2s ease; user-select: none;}
-/*.region-select input[type="radio"]:checked + label {background-color: var(--main-color); border-color: var(--main-color); color: white;}*/
-.region-select label:hover {background-color: #f0f4ff;}
-#weather-info {display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; text-align: center;}
-.weather-day {flex: 1 1 calc(50% - 10px); background-color: #f8f9fa; padding: 12px 8px; border-radius: 12px; box-sizing: border-box; min-width: 140px;}
-.weather {background: white; border-radius: 12px; padding: 1.5rem; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
-.weather h2 {margin-bottom: 1rem;}
+/* 초기화 버튼 (경고색 사용) */
+.reset {
+  background-color: var(--alert-color);
+  margin-top: 10px;
+}
 
+.reset:hover {
+  background-color: #e04848;
+}
 
-/* 반응형 */
+/* 예산 표시 섹션 */
+.budget-display {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  text-align: center;
+  gap: 10px;
+}
+
+.budget-display h3 {
+  margin: 0 0 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--secondary-text-color);
+}
+
+.amount {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.warning {
+  color: var(--alert-color);
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.edit-box input {
+  margin-bottom: 10px; /* 예산 수정 입력 필드 아래 여백 조절 */
+}
+
+/* 여행 목적지 버튼 그룹 */
+.dest-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dest-buttons button {
+  flex: 1 1 45%; /* 한 줄에 두 개씩 배치 */
+  min-width: 120px;
+}
+
+/* 지역 선택 (라디오 버튼) */
+.region-select {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.region-select input[type="radio"] {
+  display: none; /* 실제 라디오 버튼 숨김 */
+}
+
+.region-select label {
+  padding: 12px 24px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 999px; /* 매우 둥근 모서리 (알약 형태) */
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.region-select label:hover {
+  background-color: var(--light-hover-bg);
+}
+
+/* 날씨 예보 디스플레이 */
+#weekly-weather { /* HTML에서 #weather-info가 아닌 #weekly-weather로 사용됨 */
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.weather-day {
+  flex: 1 1 120px; /* 각 요일 카드의 기본 너비 및 유연성 */
+  background: var(--light-grey-bg); /* 연한 회색 배경 */
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* (주의: .weather 스타일은 사용되지 않는 것으로 보입니다. HTML에 .weather 클래스를 가진 요소가 없습니다.) */
+/*
+.weather {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.weather h2 {
+  margin-bottom: 1rem;
+}
+*/
+
+/* ===== 4. 반응형 디자인 (모바일 최적화) ===== */
 @media (max-width: 480px) {
   .container {
-    padding: 0 12px;
+    padding: 0 12px; /* 모바일에서 좌우 여백 줄임 */
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 모바일에서 제목 크기 줄임 */
   }
 
   .budget-display {
-    flex-direction: column;
+    flex-direction: column; /* 예산 표시 세로 정렬 */
     gap: 12px;
   }
 
   li {
-    flex-direction: column;
+    flex-direction: column; /* 리스트 항목 세로 정렬 */
     align-items: flex-start;
   }
 
   li button {
     margin-top: 8px;
-    width: 100%;
+    width: 100%; /* 리스트 내 버튼 전체 너비 */
   }
 
   .dest-buttons {
-    flex-direction: column;
+    flex-direction: column; /* 목적지 버튼 세로 정렬 */
   }
 
   .dest-buttons button {
-    width: 100%;
+    width: 100%; /* 목적지 버튼 전체 너비 */
   }
+
   .region-select {
-    flex-direction: column;
+    flex-direction: column; /* 지역 선택 라벨 세로 정렬 */
     gap: 10px;
   }
 
   .region-select label {
-    width: 100%;
+    width: 100%; /* 지역 선택 라벨 전체 너비 */
     text-align: center;
   }
-  #weather-info {
+
+  #weekly-weather { /* 날씨 예보 카드 세로 정렬 */
     flex-direction: column;
   }
 
   .weather-day {
-    width: 100%;  /* ✅ 모바일에서는 한 줄에 하나 */
-    flex: none;
+    width: 100%; /* 각 요일 카드 전체 너비 */
+    flex: none; /* flexgrow, flexshrink, flexbasis 초기화 */
   }
 }
