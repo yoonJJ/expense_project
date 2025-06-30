@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/* ===== 1. CSS 변수 정의 ===== */
 :root {
   --main-color: #3182f6;      /* 주 색상 (파랑) */
   --hover-color: #2563eb;     /* 호버 색상 (더 진한 파랑) */

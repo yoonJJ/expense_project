@@ -64,10 +64,8 @@
         <label><input type="radio" name="region" value="daebudo"> 대부도</label>
       </div>
 
-      <div id="weekly-weather" style="display: flex; gap: 12px; flex-wrap: wrap;"></div>
+      <div id="weekly-weather"></div>
     </section>
-
-
 
     <script>
       const locations = {
@@ -91,7 +89,7 @@
             let html = '';
             for (let i = 0; i < dates.length; i++) {
               html += `
-                <div class="weather-day" style="flex: 1 1 120px; background: #f9f9f9; padding: 1rem; border-radius: 10px; text-align: center;">
+                <div class="weather-day">
                   <h4 style="margin-bottom: 6px;">${dates[i].slice(5)}</h4>
                   <p>🌡️ ${minTemps[i]}° ~ ${maxTemps[i]}°</p>
                   <p>🌧️ 강수확률: ${rainProbs[i] ?? 0}%</p>
