@@ -11,20 +11,18 @@
 .warning {color: var(--alert-color); text-align: center; margin-bottom: 16px; font-weight: 500;}
 .edit-box input {margin-bottom: 10px;}
 
-/* 목적지 버튼 그룹 */
+
 .dest-buttons {display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;}
 .dest-buttons button {flex: 1 1 45%; min-width: 120px;}
-
-.weather {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-.weather h2 {
-  margin-bottom: 1rem;
-}
+.region-select {display: flex; justify-content: space-evenly; gap: 12px; margin: 16px 0; flex-wrap: wrap;}
+.region-select input[type="radio"] {display: none;}
+.region-select label {padding: 12px 24px; border: 1.5px solid var(--border-color); border-radius: 999px; background-color: #fff; font-size: 1rem; font-weight: 500; color: #333; cursor: pointer; transition: all 0.2s ease; user-select: none;}
+/*.region-select input[type="radio"]:checked + label {background-color: var(--main-color); border-color: var(--main-color); color: white;}*/
+.region-select label:hover {background-color: #f0f4ff;}
+#weather-info {display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; text-align: center;}
+.weather-day {flex: 1 1 calc(50% - 10px); background-color: #f8f9fa; padding: 12px 8px; border-radius: 12px; box-sizing: border-box; min-width: 140px;}
+.weather {background: white; border-radius: 12px; padding: 1.5rem; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+.weather h2 {margin-bottom: 1rem;}
 
 
 /* 반응형 */
