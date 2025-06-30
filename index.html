@@ -56,6 +56,68 @@
       </div>
     </section>
 
+    <section class="card">
+      <h2>🌤️ 여행지 날씨 예보</h2>
+
+      <div class="region-select" style="display: flex; gap: 12px; justify-content: space-evenly; margin-bottom: 16px; text-align: center;">
+        <label><input type="radio" name="region" value="suwon" checked> 수원</label>
+        <label><input type="radio" name="region" value="daebudo"> 대부도</label>
+      </div>
+
+      <div id="weekly-weather" style="display: flex; gap: 12px; flex-wrap: wrap;"></div>
+    </section>
+
+
+
+    <script>
+      const locations = {
+        suwon: { name: '수원', lat: 37.2636, lon: 127.0286 },
+        daebudo: { name: '대부도', lat: 37.2932, lon: 126.5880 }
+      };
+
+      function fetchWeather(regionKey) {
+        const { lat, lon } = locations[regionKey];
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul`;
+
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const container = document.getElementById("weekly-weather");
+            const dates = data.daily.time;
+            const maxTemps = data.daily.temperature_2m_max;
+            const minTemps = data.daily.temperature_2m_min;
+            const rainProbs = data.daily.precipitation_probability_max;
+
+            let html = '';
+            for (let i = 0; i < dates.length; i++) {
+              html += `
+                <div class="weather-day" style="flex: 1 1 120px; background: #f9f9f9; padding: 1rem; border-radius: 10px; text-align: center;">
+                  <h4 style="margin-bottom: 6px;">${dates[i].slice(5)}</h4>
+                  <p>🌡️ ${minTemps[i]}° ~ ${maxTemps[i]}°</p>
+                  <p>🌧️ 강수확률: ${rainProbs[i] ?? 0}%</p>
+                </div>
+              `;
+            }
+            container.innerHTML = html;
+          })
+          .catch(err => {
+            document.getElementById("weekly-weather").innerHTML = "<p>날씨 정보를 불러오지 못했습니다.</p>";
+            console.error(err);
+          });
+      }
+
+      // 초기 호출
+      fetchWeather('suwon');
+
+      // 라디오 버튼 변경 이벤트 등록
+      document.querySelectorAll('input[name="region"]').forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          fetchWeather(e.target.value);
+        });
+      });
+    </script>
+
+
     <!--
     <section class="card">
         <h2>🌤 날씨 정보</h2>

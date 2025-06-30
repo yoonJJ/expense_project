@@ -15,60 +15,15 @@
 .dest-buttons {display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;}
 .dest-buttons button {flex: 1 1 45%; min-width: 120px;}
 
-/* 기존 날씨 영역 */
-.region-select {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 12px;
-  margin: 16px 0;
-  flex-wrap: wrap;
-}
-
-.region-select input[type="radio"] {
-  display: none; /* 라디오 숨기기 */
-}
-
-.region-select label {
-  padding: 12px 24px;
-  border: 1.5px solid var(--border-color);
-  border-radius: 999px;
-  background-color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
-}
-
-/* 선택된 라디오 버튼 스타일 */
-.region-select input[type="radio"]:checked + label {
-  background-color: var(--main-color);
-  border-color: var(--main-color);
-  color: white;
-}
-
-/* 호버 효과 */
-.region-select label:hover {
-  background-color: #f0f4ff;
-}
-
-#weather-info {
-  display: flex;
-  flex-wrap: wrap;  /* ✅ 추가: 줄바꿈 허용 */
-  justify-content: space-between;
-  gap: 10px;
-  text-align: center;
-}
-
-/* 날씨 카드 */
-.weather-day {
-  flex: 1 1 calc(50% - 10px);  /* ✅ 반응형 2열 */
-  background-color: #f8f9fa;
-  padding: 12px 8px;
-  border-radius: 12px;
-  box-sizing: border-box;
-  min-width: 140px;  /* ✅ 최소 크기 */
+.weather {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+.weather h2 {
+  margin-bottom: 1rem;
 }
 
 
