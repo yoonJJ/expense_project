@@ -121,6 +121,13 @@
   min-width: 100px; /* 각 날씨 카드의 최소 너비 */
 }
 
+/* weather-day 내부 h4의 마진 추가 */
+.weather-day h4 {
+  margin-bottom: 6px;
+  /* 기존 h2의 마진-바텀은 weather-day h4에겐 필요 없으므로 제거 */
+  margin-top: 0;
+}
+
 
 /* ===== 4. 반응형 디자인 (모바일 최적화) ===== */
 @media (max-width: 480px) {
@@ -173,5 +180,6 @@
   .weather-day {
     width: 100%; /* 모바일에서 전체 너비 사용 */
     flex: none; /* flex 속성 초기화하여 width: 100%가 적용되도록 함 */
+    min-width: auto; /* 모바일에서는 최소 너비 제한 해제 */
   }
 }

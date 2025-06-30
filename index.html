@@ -90,7 +90,7 @@
             for (let i = 0; i < dates.length; i++) {
               html += `
                 <div class="weather-day">
-                  <h4 style="margin-bottom: 6px;">${dates[i].slice(5)}</h4>
+                  <h4>${dates[i].slice(5)}</h4>
                   <p>🌡️ ${minTemps[i]}° ~ ${maxTemps[i]}°</p>
                   <p>🌧️ 강수확률: ${rainProbs[i] ?? 0}%</p>
                 </div>
